@@ -22,7 +22,11 @@ public class ComputerRepositorio {
 
     }
     public Computer save(Computer computer){
+
         return computerCrudRepository.save(computer);
     }
+
+    public void delete (Computer computer){
+        computerCrudRepository.delete(computer);}
     
 }

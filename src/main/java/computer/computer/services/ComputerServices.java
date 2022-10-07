@@ -18,6 +18,9 @@ public class ComputerServices {
 
 
     }
+    public Optional<Computer> getComputer(int id){
+        return computerRepositorio.getComputer(id);
+    }
 
     public Computer save(Computer computer) {
         if (computer.getId() == null) {
@@ -34,5 +37,39 @@ public class ComputerServices {
                 return computer;
             }
         }
+    }
+    public Computer update (Computer computer){
+        if(computer.getId()!=null){
+            Optional <Computer> op = computerRepositorio.getComputer(computer.getId());
+            if (op.isPresent()){
+                if (computer.getName()!=null){
+                    op.get().setName(computer.getName());
+
+                }
+                if (computer.getBrand()!=null){
+                    op.get().setBrand(computer.getBrand());
+
+                }
+                if (computer.getModel()!=null){
+                    op.get().setModel(computer.getModel());
+                }
+                computerRepositorio.save(op.get());
+                return op.get();
+
+            }else {
+                return computer;
+            }
+        }else {
+            return computer;
+        }
+    }
+    public boolean delete(int id){
+        boolean flag=false;
+        Optional<Computer>computer=computerRepositorio.getComputer(id);
+        if (computer.isPresent()){
+            computerRepositorio.delete(computer.get());
+            flag=true;
+        }
+        return flag;
     }
 }
