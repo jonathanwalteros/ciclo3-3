@@ -1,9 +1,7 @@
 package computer.computer.services;
 
-import computer.computer.modelo.Computer;
 import computer.computer.modelo.Reservation;
-import computer.computer.repositorio.ComputerRepositorio;
-import computer.computer.repositorio.ReservationRepositorio;
+import computer.computer.repositorio.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +11,7 @@ import java.util.Optional;
 @Service
 public class ReservationServices {
     @Autowired
-    private ReservationRepositorio reservationRepositorio;
+    private ReservationRepository reservationRepositorio;
 
     public List<Reservation> getAll() {
         return reservationRepositorio.getAll();

@@ -1,7 +1,7 @@
 package computer.computer.services;
 
 import computer.computer.modelo.Computer;
-import computer.computer.repositorio.ComputerRepositorio;
+import computer.computer.repositorio.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class ComputerServices {
     @Autowired
-    private ComputerRepositorio computerRepositorio;
+    private ComputerRepository computerRepositorio;
 
     public List<Computer> getAll() {
         return computerRepositorio.getAll();

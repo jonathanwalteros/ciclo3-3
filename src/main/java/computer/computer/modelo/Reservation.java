@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "computer")
+@Table(name = "reservation")
 
 public class Reservation implements Serializable {
 
@@ -22,6 +22,10 @@ public class Reservation implements Serializable {
     private Date starDate;
     private Date devolutionDate;
     private Integer score;
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    @JsonIgnoreProperties("reservation")
+    private Category category;
 
     public Integer getIdReservation() {
         return idReservation;

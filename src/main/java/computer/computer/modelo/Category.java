@@ -25,6 +25,10 @@ public class Category implements Serializable {
     @JsonIgnoreProperties("category")
     private List<Computer> computers;
 
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
+    @JsonIgnoreProperties("category")
+    private List<Reservation> reservation;
+
     public Integer getId() {
         return id;
     }

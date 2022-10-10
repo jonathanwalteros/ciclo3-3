@@ -2,7 +2,6 @@ package computer.computer.repositorio;
 
 
 import computer.computer.modelo.Client;
-import computer.computer.modelo.Computer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ClientRepositorio {
+public class ClientRepository {
 @Autowired
     private ClientCrudRepository clientCrudRepository;
 
