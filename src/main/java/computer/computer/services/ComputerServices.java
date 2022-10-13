@@ -11,26 +11,26 @@ import java.util.Optional;
 @Service
 public class ComputerServices {
     @Autowired
-    private ComputerRepository computerRepositorio;
+    private ComputerRepository computerRepository;
 
     public List<Computer> getAll() {
-        return computerRepositorio.getAll();
+        return computerRepository.getAll();
 
 
     }
     public Optional<Computer> getComputer(int id){
-        return computerRepositorio.getComputer(id);
+        return computerRepository.getComputer(id);
     }
 
     public Computer save(Computer computer) {
         if (computer.getId() == null) {
-            return computerRepositorio.save(computer);
+            return computerRepository.save(computer);
 
 
         } else {
-            Optional<Computer> opt = computerRepositorio.getComputer(computer.getId());
+            Optional<Computer> opt = computerRepository.getComputer(computer.getId());
             if (opt.isEmpty()) {
-                return computerRepositorio.save(computer);
+                return computerRepository.save(computer);
 
             } else {
 
@@ -40,7 +40,8 @@ public class ComputerServices {
     }
     public Computer update (Computer computer){
         if(computer.getId()!=null){
-            Optional <Computer> op = computerRepositorio.getComputer(computer.getId());
+            Optional <Computer> op = computerRepository
+                    .getComputer(computer.getId());
             if (op.isPresent()){
                 if (computer.getName()!=null){
                     op.get().setName(computer.getName());
@@ -53,7 +54,7 @@ public class ComputerServices {
                 if (computer.getModel()!=null){
                     op.get().setModel(computer.getModel());
                 }
-                computerRepositorio.save(op.get());
+                computerRepository.save(op.get());
                 return op.get();
 
             }else {
@@ -65,9 +66,9 @@ public class ComputerServices {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Computer>computer=computerRepositorio.getComputer(id);
+        Optional<Computer>computer=computerRepository.getComputer(id);
         if (computer.isPresent()){
-            computerRepositorio.delete(computer.get());
+            computerRepository.delete(computer.get());
             flag=true;
         }
         return flag;
