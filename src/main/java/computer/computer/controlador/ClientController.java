@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Client")
@@ -18,6 +19,10 @@ public class ClientController {
     @GetMapping("/all")
     public List<Client> getClient(){
         return clientServices.getAll();
+    }
+    @GetMapping("/{id}")
+    public Optional<Client> getClient(@PathVariable("id") int clientId) {
+        return clientServices.getClient(clientId);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

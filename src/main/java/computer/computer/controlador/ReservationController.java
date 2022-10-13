@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Reservation")
@@ -17,6 +18,10 @@ public class ReservationController {
     @GetMapping("/all")
     public List<Reservation> getReservation(){
         return reservationServices.getAll();
+    }
+    @GetMapping("/{id}")
+    public Optional<Reservation> getReservation(@PathVariable("id") int reservationId) {
+        return reservationServices.getReservation(reservationId);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

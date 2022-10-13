@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Computer")
@@ -16,6 +17,10 @@ public class ComputerController {
     @GetMapping("/all")
     public List<Computer> getComputer(){
         return computerServices.getAll();
+    }
+    @GetMapping("/{id}")
+    public Optional<Computer> getComputer(@PathVariable("id") int computerId) {
+        return computerServices.getComputer(computerId);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
