@@ -1,5 +1,7 @@
 package computer.computer.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,10 +11,22 @@ public class Client  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
-    private String name;
+
     private String email;
     private String password;
+    private String name;
     private Integer age;
+
+    @ManyToOne
+    @JoinColumn(name = "messageId")
+    @JsonIgnoreProperties("client")
+    private Message message;
+
+    @ManyToOne
+    @JoinColumn(name = "reservations")
+    @JsonIgnoreProperties("client")
+    private Reservation reservation;
+
 
     public Integer getIdClient() {
         return idClient;
@@ -20,14 +34,6 @@ public class Client  implements Serializable {
 
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -46,6 +52,14 @@ public class Client  implements Serializable {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -53,4 +67,21 @@ public class Client  implements Serializable {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 }
+

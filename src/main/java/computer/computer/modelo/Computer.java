@@ -17,15 +17,22 @@ public class Computer implements Serializable {
     private Integer id;
     private String name;
     private String brand;
-    private String description;
     private Integer year;
-    private Integer model;
-
-
+    private String description;
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("computer")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name = "messageId")
+    @JsonIgnoreProperties("computer")
+    private Message message;
+
+    @ManyToOne
+    @JoinColumn(name = "reservations")
+    @JsonIgnoreProperties("computer")
+    private  Reservation reservation;
+
 
     public Integer getId() {
         return id;
@@ -51,14 +58,6 @@ public class Computer implements Serializable {
         this.brand = brand;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Integer getYear() {
         return year;
     }
@@ -67,12 +66,12 @@ public class Computer implements Serializable {
         this.year = year;
     }
 
-    public Integer getModel() {
-        return model;
+    public String getDescription() {
+        return description;
     }
 
-    public void setModel(Integer model) {
-        this.model = model;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getCategory() {
@@ -81,5 +80,21 @@ public class Computer implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 }

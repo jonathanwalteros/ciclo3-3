@@ -42,16 +42,11 @@ public class ReservationServices {
         if(reservation.getIdReservation()!=null){
             Optional <Reservation> op = reservationRepositorio.getReservation(reservation.getIdReservation());
             if (op.isPresent()){
-                if (reservation.getName()!=null){
-                    op.get().setName(reservation.getName());
 
-                }
                 if (reservation.getStatus()!=null){
                     op.get().setStatus(reservation.getStatus());
 
-                }
-                if (reservation.getDescription()!=null){
-                    op.get().setDescription(reservation.getDescription());
+
                 }
                 if (reservation.getStarDate()!=null){
                     op.get().setStarDate(reservation.getStarDate());

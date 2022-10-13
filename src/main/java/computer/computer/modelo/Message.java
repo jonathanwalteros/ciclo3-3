@@ -21,6 +21,15 @@ public class Message implements Serializable {
     @JsonIgnoreProperties("messages")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "computerId")
+    @JsonIgnoreProperties("computer")
+    private Computer computer;
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties("client")
+    private Client client;
+
     public Integer getIdMessage() {
         return idMessage;
     }
@@ -43,5 +52,21 @@ public class Message implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Computer getComputer() {
+        return computer;
+    }
+
+    public void setComputer(Computer computer) {
+        this.computer = computer;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

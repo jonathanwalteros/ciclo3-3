@@ -16,16 +16,31 @@ public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
-    private String name;
-    private String status;
-    private String description;
     private Date starDate;
     private Date devolutionDate;
-    private Integer score;
+    private String status;
+    @ManyToOne
+    @JoinColumn(name = "computerid")
+    @JsonIgnoreProperties("computer")
+    private Computer computer;
+
+
+
+
     @ManyToOne
     @JoinColumn(name = "categoryid")
     @JsonIgnoreProperties("reservation")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name = "messageid")
+    @JsonIgnoreProperties("messages")
+    private Message message;
+    @ManyToOne
+    @JoinColumn(name = "clientid")
+    @JsonIgnoreProperties("client")
+    private Client client;
+
+    private Integer score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -33,30 +48,6 @@ public class Reservation implements Serializable {
 
     public void setIdReservation(Integer idReservation) {
         this.idReservation = idReservation;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Date getStarDate() {
@@ -73,6 +64,46 @@ public class Reservation implements Serializable {
 
     public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Computer getComputer() {
+        return computer;
+    }
+
+    public void setComputer(Computer computer) {
+        this.computer = computer;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Integer getScore() {

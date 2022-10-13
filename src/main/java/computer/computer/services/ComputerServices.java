@@ -51,9 +51,7 @@ public class ComputerServices {
                     op.get().setBrand(computer.getBrand());
 
                 }
-                if (computer.getModel()!=null){
-                    op.get().setModel(computer.getModel());
-                }
+
                 computerRepository.save(op.get());
                 return op.get();
 
