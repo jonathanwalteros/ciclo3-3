@@ -19,6 +19,8 @@ public class Computer implements Serializable {
     private String brand;
     private Integer year;
     private String description;
+
+
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("computer")
