@@ -1,8 +1,8 @@
 package computer.computer.controlador;
 
-import computer.computer.modelo.Computer;
+
 import computer.computer.modelo.Message;
-import computer.computer.services.ComputerServices;
+
 import computer.computer.services.MessageServices;
 
 
@@ -26,6 +26,12 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody Message message){
         return messageServices.save(message);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message update(@RequestBody Message message){
+        return messageServices.update(message);
     }
 
     @DeleteMapping("/{id}")

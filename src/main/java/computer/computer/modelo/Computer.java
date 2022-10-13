@@ -1,10 +1,11 @@
 package computer.computer.modelo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "computer")
@@ -25,15 +26,13 @@ public class Computer implements Serializable {
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("computer")
     private Category category;
-    @ManyToOne
-    @JoinColumn(name = "messageId")
-    @JsonIgnoreProperties("computer")
-    private Message message;
 
-    @ManyToOne
-    @JoinColumn(name = "reservations")
-    @JsonIgnoreProperties("computer")
-    private  Reservation reservation;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "computer")
+    @JsonIgnoreProperties({"computer","client"})
+    private List<Message> message;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "computer")
+    @JsonIgnoreProperties({"computer","message"})
+    public List<Reservation>reservation;
 
 
     public Integer getId() {
@@ -84,19 +83,19 @@ public class Computer implements Serializable {
         this.category = category;
     }
 
-    public Message getMessage() {
+    public List<Message> getMessage() {
         return message;
     }
 
-    public void setMessage(Message message) {
+    public void setMessage(List<Message> message) {
         this.message = message;
     }
 
-    public Reservation getReservation() {
+    public List<Reservation> getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservation reservation) {
+    public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
 }

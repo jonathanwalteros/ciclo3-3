@@ -1,7 +1,7 @@
 package computer.computer.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.dao.DataAccessException;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,29 +18,19 @@ public class Reservation implements Serializable {
     private Integer idReservation;
     private Date starDate;
     private Date devolutionDate;
-    private String status;
+    private String status="created";
     @ManyToOne
-    @JoinColumn(name = "computerid")
-    @JsonIgnoreProperties("computer")
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties("reservation")
     private Computer computer;
 
-
-
-
     @ManyToOne
-    @JoinColumn(name = "categoryid")
-    @JsonIgnoreProperties("reservation")
-    private Category category;
-    @ManyToOne
-    @JoinColumn(name = "messageid")
-    @JsonIgnoreProperties("messages")
-    private Message message;
-    @ManyToOne
-    @JoinColumn(name = "clientid")
-    @JsonIgnoreProperties("client")
+    @JoinColumn(name="clientId")
+    @JsonIgnoreProperties({"reservation","message"})
     private Client client;
 
-    private Integer score;
+    private String score;
+
 
     public Integer getIdReservation() {
         return idReservation;
@@ -82,22 +72,6 @@ public class Reservation implements Serializable {
         this.computer = computer;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
-    }
-
     public Client getClient() {
         return client;
     }
@@ -106,11 +80,11 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    public Integer getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(String score) {
         this.score = score;
     }
 }

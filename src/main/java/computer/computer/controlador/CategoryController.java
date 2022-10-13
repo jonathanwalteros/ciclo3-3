@@ -1,9 +1,9 @@
 package computer.computer.controlador;
 
 import computer.computer.modelo.Category;
-import computer.computer.modelo.Computer;
+
 import computer.computer.services.CategoryServices;
-import computer.computer.services.ComputerServices;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +23,11 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category category){
         return categoryServices.save(category);
+    }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category update(@RequestBody Category category){
+        return categoryServices.update(category);
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

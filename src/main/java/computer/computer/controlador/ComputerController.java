@@ -22,6 +22,12 @@ public class ComputerController {
     public Computer save(@RequestBody Computer computer){
         return computerServices.save(computer);
     }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Computer update(@RequestBody Computer computer){
+        return computerServices.update(computer);
+    }
+
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

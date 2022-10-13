@@ -1,7 +1,7 @@
 package computer.computer.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,13 +21,9 @@ public class Category implements Serializable {
     private String name;
     private String description;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
     @JsonIgnoreProperties("category")
-    private List<Computer> computers;
-
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
-    @JsonIgnoreProperties("category")
-    private List<Reservation> reservation;
+    private List<Computer> computer;
 
     public Integer getId() {
         return id;
@@ -53,11 +49,11 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public List<Computer> getComputers() {
-        return computers;
+    public List<Computer> getComputer() {
+        return computer;
     }
 
-    public void setComputers(List<Computer> computers) {
-        this.computers = computers;
+    public void setComputer(List<Computer> computer) {
+        this.computer = computer;
     }
 }

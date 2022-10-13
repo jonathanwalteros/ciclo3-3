@@ -1,9 +1,9 @@
 package computer.computer.controlador;
 
 import computer.computer.modelo.Client;
-import computer.computer.modelo.Computer;
+
 import computer.computer.services.ClientServices;
-import computer.computer.services.ComputerServices;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +23,11 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody Client client){
         return clientServices.save(client);
+    }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client update(@RequestBody Client client){
+        return clientServices.update(client);
     }
 
     @DeleteMapping("/{id}")

@@ -1,7 +1,7 @@
 package computer.computer.services;
 
 import computer.computer.modelo.Category;
-import computer.computer.modelo.Computer;
+
 import computer.computer.repositorio.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

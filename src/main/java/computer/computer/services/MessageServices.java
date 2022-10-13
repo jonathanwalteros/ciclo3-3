@@ -44,6 +44,22 @@ public class MessageServices {
             }
         }
     }
+    public Message update(Message message){
+        if (message.getIdMessage()!=null){
+            Optional<Message> e= messageRepository.getMessage(message.getIdMessage());
+            if (!e.isEmpty()){
+                if (message.getMessageText()!=null){
+                    e.get().setMessageText(message.getMessageText());
+                }
+                messageRepository.save(e.get());
+                return e.get();
+            }else {
+                return message;
+            }
+        }else {
+            return message;
+        }
+    }
 
 
 

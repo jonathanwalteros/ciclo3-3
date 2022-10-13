@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "messages")
+@Table(name = "message")
 
 public class Message implements Serializable {
 
@@ -14,20 +14,16 @@ public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
-    private String messagetext;
+    private String messageText;
 
     @ManyToOne
-    @JoinColumn(name = "categoryid")
-    @JsonIgnoreProperties("messages")
-    private Category category;
-
-    @ManyToOne
-    @JoinColumn(name = "computerId")
-    @JsonIgnoreProperties("computer")
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"messages","reservation"})
     private Computer computer;
+
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties({"message","reservation"})
     private Client client;
 
     public Integer getIdMessage() {
@@ -38,20 +34,12 @@ public class Message implements Serializable {
         this.idMessage = idMessage;
     }
 
-    public String getMessagetext() {
-        return messagetext;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setMessagetext(String messagetext) {
-        this.messagetext = messagetext;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 
     public Computer getComputer() {

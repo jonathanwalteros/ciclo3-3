@@ -1,6 +1,6 @@
 package computer.computer.controlador;
 
-import computer.computer.modelo.Computer;
+
 import computer.computer.modelo.Reservation;
 import computer.computer.services.ReservationServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,11 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation reservation){
         return reservationServices.save(reservation);
+    }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation reservation){
+        return reservationServices.update(reservation);
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
