@@ -21,12 +21,12 @@ public class Reservation implements Serializable {
     private String status="created";
     @ManyToOne
     @JoinColumn(name = "id")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Computer computer;
 
     @ManyToOne
     @JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"reservations","message"})
+    @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
 
     private String score;
