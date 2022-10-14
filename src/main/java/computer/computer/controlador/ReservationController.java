@@ -18,7 +18,7 @@ public class ReservationController {
     @Autowired
     private ReservationServices reservationServices;
     @GetMapping("/all")
-    public List<Reservation> getReservation(){
+    public List<Reservation> getReservations(){
         return reservationServices.getAll();
     }
     @GetMapping("/{id}")
